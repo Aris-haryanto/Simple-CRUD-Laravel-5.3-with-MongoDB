@@ -55,7 +55,7 @@
                     </thead>
 
                     <tbody>
-                        <?php echo $i = 1; ?>
+                        <?php $i = 1; ?>
                         @foreach ($data_user as $data)
 
                             <tr>
