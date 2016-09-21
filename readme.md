@@ -9,7 +9,16 @@
 ### How to install
 
 - clone or download as zip then open your terminal and type composer install 
-- rename env.example to env opened then set with your own settings
+- rename env.example to env opened then change with your own settings
+
+### Bonus Function
+
+- Generate fake data up to 1000
+
+### Credits
+
+- [https://github.com/jenssegers/laravel-mongodb](https://github.com/jenssegers/laravel-mongodb)
+- [https://github.com/fzaninotto/Faker](https://github.com/fzaninotto/Faker)
 
 ### License
 
