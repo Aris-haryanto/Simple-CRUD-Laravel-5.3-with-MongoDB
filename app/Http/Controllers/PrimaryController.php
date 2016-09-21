@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\PrimaryModels as Moloquent;
 use Illuminate\Http\Request;
+use Faker\Factory as Faker;
 use Input, Redirect;
 
 class PrimaryController extends Controller
 {
     function index(){
-        //We dont need this
+        return Redirect::to('home');
     }
 
     function pages($template){
@@ -58,14 +59,28 @@ class PrimaryController extends Controller
                 ->with('success','You have been successfully deleted data');
 
     }
-    
-    function createFaker(){
-    	$faker = Faker::create();
-		for ($i=1; $i < 2000000; $i++) {
-			$user = new Moloquent;
-			$user->name = $faker->name;
-			$user->email = $faker->email;
-			$user->save();
-		}
+    function deleteAll(){
+        
+        $return = Moloquent::where('_id','!=','')->delete();
+        
+        return Redirect::to('home');
+
     }
+    
+    function generateFake(Request $request){
+        $count = $request->input('fakedata');
+
+        if($count < 1000){
+        	$faker = Faker::create();
+    		for ($i=1; $i <= $count; $i++) {
+    			$user = new Moloquent;
+    			$user->username = $faker->name;
+    			$user->email = $faker->email;
+                $user->address = $faker->address;
+    			$user->save();
+    		}
+        }
+        return Redirect::to('home');
+    }
+    
 }

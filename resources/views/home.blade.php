@@ -11,24 +11,24 @@
                     {!! @Form::text('username', null,
                                     array('required',
                                             'class' => 'form-control',
-                                            'placeholde' => 'username' )) !!}
+                                            'placeholder' => 'Username' )) !!}
                 </div>
                 <div class="form-group">
                     {!! @Form::label('email') !!}
                     {!! @Form::text('email', null,
                                     array('required',
                                             'class' => 'form-control',
-                                            'placeholde' => 'email' )) !!}
+                                            'placeholder' => 'Email' )) !!}
                 </div>
                 <div class="form-group">
                     {!! @Form::label('Address') !!}
-                    {!! @Form::text('address', null,
+                    {!! @Form::textarea('address', null,
                                     array('required',
                                             'class' => 'form-control',
-                                            'placeholde' => 'address' )) !!}
+                                            'placeholder' => 'Address' )) !!}
                 </div>
                 <div class="form-group">
-                    {!! @Form::submit('Add User',
+                    {!! @Form::submit('Insert User',
                                         array('class' => 'btn btn-primary')) !!}
                 </div>
                 {!! @Form::close() !!}
@@ -36,7 +36,29 @@
         </div>
     </div>
     
-    <div class="col-md-8 col-sm-8 col-xs-8">  
+    <div class="col-md-8 col-sm-8 col-xs-8">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Generate Fake Data <span class="label label-success pull-right">Bonus Function</span></div>
+            <div class="panel-body">
+                {!! @Form::open(array('route' => route_generate, 'class' => 'test-form form-inline')) !!}
+                <div class="form-group">
+                    {!! @Form::number('fakedata', null,
+                                    array('required',
+                                            'min' => '0',
+                                            'max' => '1000',
+                                            'style' => 'width: 200px;',
+                                            'class' => 'form-control',
+                                            'placeholder' => 'Example: 1000' )) !!}
+                </div>
+                <div class="form-group">
+                    {!! @Form::submit('Generate',
+                                        array('class' => 'btn btn-warning')) !!}
+                    <a href="{{ route('route_deleteall') }}" class="btn btn-danger">Delete All Data</a>
+                </div>
+                {!! @Form::close() !!}
+            </div>
+        </div>
         <div class="panel panel-default">
             <div class="panel-heading">List User</div>
             <div class="panel-body">
